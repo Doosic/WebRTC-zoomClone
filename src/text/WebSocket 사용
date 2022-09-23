@@ -1,0 +1,33 @@
+
+    * WebSocket을 사용해보자
+
+    * Server에서
+      - socket.send(): 데이터를 담아 보낼 수 있다.
+      - socket.on(): 서버측도 이벤트를 사용할 수 있으며, 브라우저측이 연결을 끊었을때를 알수있다.
+
+        wss.on("connection", (socket) => {
+        socket.on("close", () => {
+                        console.log("Disconnected from the Browser");
+                    })
+            socket.send("helo!!!");
+        });
+
+
+
+    * Front에서
+      - open, message, close라는 정해진 이벤트를 사용할 수 있다.
+        open: 연결되었을때
+        message: 서버에서 데이터를 보냈을때
+        close: 연결이 종료되었을때
+
+        socket.addEventListener("open", () => {
+            console.log("Connected to Server");
+        })
+
+        socket.addEventListener("message", (message) => {
+            console.log("Just got this: ", message.data, " from the Browser");
+        })
+
+        socket.addEventListener("close", () => {
+            console.log("DisConnected from Server");
+        })
