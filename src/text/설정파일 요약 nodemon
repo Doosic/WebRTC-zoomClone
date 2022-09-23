@@ -1,0 +1,15 @@
+
+    * nodemon.json
+    - npm install nodemon -D
+      Nodemon은 프로젝트에 변경 사항이 발생할 시 서버를 재시작해주는 프로그램이다.
+      {
+          // ignore 은 서버를 재시작하지 않을 파일을 지정
+          "ignore": ["src/public/*"],
+          /*
+            1.서버를 재시작 해야할 파일을 지정
+            2.서버 재시작하는 대신 beble-node를 실행하게된다.
+            3.Bebel은 작성된 코드를 일반 NodeJS 코드로 컴파일 해준다.
+            4.그 작업을 src/server.js 파일에 해준다.
+          */
+          "exec": "babel-node src/server.js"
+      }

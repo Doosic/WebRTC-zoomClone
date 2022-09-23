@@ -1,0 +1,16 @@
+
+    * server.js
+
+      1.server.js 파일은 express를 import한다.
+      2.express 애플리케이션을 구성한다.
+      3.view Engine을 설정할 수 있다. ex) pug
+      4.views 디렉토리를 설정한다.
+
+      public 코드들에 대해서도 같은 동작을 해주는데 public 파일은 FrontEnd에서 구동되는 코드들이다.
+      public 파일 밑에서 JS를 다루는게 중요한 이유는 NodeJS로 만들기 때문에 여기저기서
+      JS파일을 사용하게되어 어떤게 FrontEnd이고 BackEnd인지 햇갈릴수 있기 때문이다.
+
+      이름을 app.js(FrontEnd에서 구동)와 server.js(BackEnd에서 구동)로 구분한것도 그 이유다.
+
+      * 유저가 내 파일들을 쉽게 들여다본다면 그것은 보안상 아주 취약해지는 문제이므로 좋지않다.
+        그렇기에 public 폴더를 생성하여 유저가 볼수있는 폴더로 지정해준다.
