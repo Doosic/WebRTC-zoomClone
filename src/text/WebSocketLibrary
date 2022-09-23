@@ -1,0 +1,38 @@
+
+    * NodeJS WebSocket library: ws
+      ws는 검증된 웹소켓 라이브러리다.
+
+      규약 즉, 프로토콜에 맞춰 프로그래머는 코드를 개발한다.
+
+      webSocket protocol이라는 규약을 코드에 녹여내면 되기때문에
+      java, c++, Node, Golang 어디서든 사용할 수 있다.
+
+      ws 는 core다. 부가적인 유틸이나 기능이 없다.
+      말 그대로 웹 소켓의 코어이다.
+
+      채팅방의 기능을 제공하는 framework가 있지만 먼저 ws를 알아보자.
+
+    * express는 http 서버인데 어떻게 할까?
+      - express 서버를 두고 ws까지 합쳐서 사용한다.
+        다만 꼭 이렇게 사용하는 것은 아니다. 이렇게 하고싶을 때가 있는데
+        그때에만 하면된다.
+
+
+    * FrontEnd 에서는 브라우저가 이미 WebSocket 클라이언트에 대한 implementation(구현)
+      을 가지고있기에 아무것도 설치할 필요가 없다. 아무것도 필요없다. 브라우저에서 지원해주며
+      IE에서 조차 지원해준다.
+
+    * webSocket도 자바스크립트의 submit, click 처럼
+      listen할 특정한 event명이 있다. ws에서도 추가적인 정보를 받을 function이 존재한다.
+
+    * socket 간단 정리
+      allback으로 soket을 받는다. soket은 연결된 어떤 사람이다.
+      연결된 브라우저와의 connection(연락) 라인이다.
+      message를 주고받을 수 있는데 그것을 socket에 담아서 보내주는 것이다.
+
+      프론트 엔드에서 다음과 같이 소캣을 생성해준다면
+      const socket = new WebSocket(`ws://${window.location.host}`);
+      커넥션 완료, 통신가능
+
+    * server의 socket은 연결된 브라우저를 가르킨다.
+      app의 socket은 연결된 서버를 가르킨다.
