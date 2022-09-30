@@ -21,15 +21,20 @@ const handleListen = () => console.log(`Listening on http://localhost:3000`);
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
 
+// 가짜 데이터베이스 역할(잠시 접속하는 브라우저들에 대한 정보를 담아뒀다가 해당 브라우저에 메세지를 다 뿌려주기위함)
+const sockets = [];
+
+// 아래 코드가 없어도 프론트엔드에서 요청한다면 Connection은 가능 다만 반응해줄수 없다.
 wss.on("connection", (socket) => {
+    sockets.push(socket);
     console.log("Connected to Browser");
     socket.on("close", () => {
         console.log("Disconnected from the Browser");
     })
+
     socket.on("message", (message) => {
-        console.log(message);
+        sockets.forEach(aSocket => aSocket.send(message));
     })
-    socket.send("helo!!!");
 });
 
 server.listen(3000, handleListen);
