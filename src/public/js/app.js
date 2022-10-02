@@ -15,21 +15,23 @@ socket.addEventListener("open", () => {
 socket.addEventListener("message", (message) => {
     const li = document.createElement("li");
 
-    if (message.data instanceof Blob){
-        reader = new FileReader();
+    // if (message.data instanceof Blob){
+    //     reader = new FileReader();
 
         // 파일(메세지)를 읽어들인다.
-        reader.readAsText(message.data);
+        // reader.readAsText(message.data);
 
         // 읽는 동작이 성공적으로 완료되었을때 발생
-        reader.onload = () => {
-            li.innerText = reader.result;
+        // reader.onload = () => {
+        //     console.log("읽기 완료!");
+        //     li.innerText = reader.result;
+            li.innerText =  JSON.stringify(message.data);
             messageList.append(li);
-        };
+        // };
 
-    }else {
-       console.log(message.data);
-    }
+    // }else {
+    //    console.log(message.data);
+    // }
 
 })
 
