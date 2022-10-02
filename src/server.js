@@ -27,14 +27,21 @@ const sockets = [];
 // 아래 코드가 없어도 프론트엔드에서 요청한다면 Connection은 가능 다만 반응해줄수 없다.
 wss.on("connection", (socket) => {
     sockets.push(socket);
+    socket["nickname"] = "Anon";
     console.log("Connected to Browser");
     socket.on("close", () => {
         console.log("Disconnected from the Browser");
     })
 
-    socket.on("message", (message) => {
-
-        sockets.forEach(aSocket => aSocket.send(message));
+    socket.on("message", (msg) => {
+        const message = JSON.parse(msg);
+        console.log(message);
+        switch(message.type){
+            case "new_message":
+                sockets.forEach(aSocket => aSocket.send(`${socket.nickname}: ${message.payload}`));
+            case "nickname":
+                socket["nickname"] = message.payload;
+        }
     })
 });
 
