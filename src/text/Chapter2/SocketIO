@@ -1,0 +1,21 @@
+
+    * SocketIO
+      실시간 기능을 만들어주는 Framework
+      나온지 매우 오래되었고 현재는 굉장히 안정적이다.
+      실시간, 양방향(browser, server), event 기반의 통신을 한다.
+
+
+    * ws 와는 뭐가 다른걸까? 신뢰성
+      websocket 을 이용해 실시간, 양방향, event 기반 통신 서비스 제공
+      다만 websocket은 여러 방법중 하나일 뿐이다. websocket을 사용하지 못하더라도
+      다른 방법을 사용하여 실시간, 양방향, event 기반 통신 서비스를 제공한다.
+      예를 들자면 만약 websocket을 브라우저가 지원하지 않더라도 SocketIO는 작동한다.
+      다른 여러 방법들을 사용 (HTTP long polling....)
+
+      * 정리
+      SocketIO는 websocket의 일부가 아니다!
+      SocketIO는 프론트와 벤엔드 간 실시간 통신을 가능하게 해주는 프레임워크 또는
+      라이브러리 이다. 꼭 SocketIO를 이용할 필요는 없으나 좀 더 개발자들에게 편리한
+      기능들을 제공해준다. 또한 탄력성이 있어 websocket이 사용 불가능해도 다른 방법들을
+      찾아준다.
+
