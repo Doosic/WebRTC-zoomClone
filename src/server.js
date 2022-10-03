@@ -1,7 +1,8 @@
 // 이번 프로젝트에서 Express로 해야할 일은 view를 설정해주고 랜더링해주는 것 뿐
 import * as http from "http";
-import {WebSocket} from "ws";
+// import {WebSocket} from "ws";
 import express from "express";
+import SocketIO from "socket.io"
 
 const app = express();
 
@@ -16,15 +17,16 @@ app.get("/", (_, res) => res.render("home"));
 // 5.유저가 어디로 이동하든지 home으로 redirect 시켜준다.
 app.get("/*", (_, res) => res.redirect("/"));
 
-const handleListen = () => console.log(`Listening on http://localhost:3000`);
 
-const server = http.createServer(app);
-const wss = new WebSocket.Server({ server });
+const httpServer = http.createServer(app);
+const wsServer = SocketIO(httpServer);
 
-// 가짜 데이터베이스 역할(잠시 접속하는 브라우저들에 대한 정보를 담아뒀다가 해당 브라우저에 메세지를 다 뿌려주기위함)
-const sockets = [];
+wsServer.on("connection", (socket) => {
+    console.log(socket);
+})
 
-// 아래 코드가 없어도 프론트엔드에서 요청한다면 Connection은 가능 다만 반응해줄수 없다.
+
+/*const sockets = [];
 wss.on("connection", (socket) => {
     sockets.push(socket);
     socket["nickname"] = "Anon";
@@ -43,6 +45,8 @@ wss.on("connection", (socket) => {
                 socket["nickname"] = message.payload;
         }
     })
-});
+});*/
 
-server.listen(3000, handleListen);
+
+const handleListen = () => console.log(`Listening on http://localhost:3000`);
+httpServer.listen(3000, handleListen);

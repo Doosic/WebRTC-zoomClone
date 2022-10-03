@@ -1,42 +1,13 @@
-const messageList = document.querySelector("ul")
-const messageForm = document.querySelector("#message")
-const nickForm = document.querySelector("#nick")
-const socket = new WebSocket(`ws://${window.location.host}`);
+/*
+    * io(): socket.io를 실행하고 있는 서버를 찾아준다.
+    * 브라우저의 콘솔창에 io 입력시 확인가능. 엣지는 안됌!
+    ƒ lookup(uri, opts) {
+    if (_typeof(uri) === "object") {
+      opts = uri;
+      uri = undefined;
+    }
 
-function makeMessage(type, payload){
-    const msg = {type, payload}
-    return JSON.stringify(msg);
-}
-
-socket.addEventListener("open", () => {
-    console.log("Connected to Server");
-})
-
-socket.addEventListener("message", (message) => {
-    const li = document.createElement("li");
-    li.innerText =  JSON.stringify(message.data);
-    messageList.append(li);
-})
-
-socket.addEventListener("close", () => {
-    console.log("Disconnected from Server");
-})
-
-
-function handleSubmit(event) {
-    event.preventDefault();
-    const input = messageForm.querySelector("input");
-    socket.send(makeMessage("new_message", input.value));
-    li.innerText = `You: ${input.value}`;
-    messageList.append(li);
-    input.value = "";
-}
-
-function handleNickSubmit(event){
-    event.preventDefault();
-    const input = nickForm.querySelector("input");
-    socket.send(makeMessage("nickname", input.value));
-}
-
-messageForm.addEventListener("submit", handleSubmit);
-nickForm.addEventListener("submit", handleNickSubmit);
+    opts = opts || {};
+    var parsed = url(uri, opts.path || "/socket.io");
+*/
+const socket = io();
