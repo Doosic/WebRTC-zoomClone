@@ -1,0 +1,6 @@
+
+    * SocketIO 를 사용함으로써의 장점
+      1.어떠한 이벤트던지 전달이 가능하다.
+      2.JSON을 전달할 수 있다. 이전에는 StringiFy를 사용해서 String으로 보냈어야 했다.
+      이 모든걸 SocketIO가 처리해준다.
+      3.server에서 보낸 function을 frontEnd 에서 실행이 가능하다.
