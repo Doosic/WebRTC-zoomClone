@@ -12,3 +12,7 @@
       넘겨줘야 한다.
       ex) front에서 콘솔을 찍어주는 함수를 마지막 인자로 넣어줬고 server에서는
       그걸 실행시켜 줄 수 있다. 인자값도 전해줄 수 있다.
+
+    * socket io 에는 server와 client에서 사용할 수 있는
+      많은 기능들이 있다. document를 잘 확인해보자!
+      https://socket.io/docs/v4/server-api/
