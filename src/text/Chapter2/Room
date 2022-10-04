@@ -3,4 +3,16 @@
       1.어떠한 이벤트던지 전달이 가능하다.
       2.JSON을 전달할 수 있다. 이전에는 StringiFy를 사용해서 String으로 보냈어야 했다.
       이 모든걸 SocketIO가 처리해준다.
-      3.server에서 보낸 function을 frontEnd 에서 실행이 가능하다.
+      3.server에서 호출하는 function을 frontEnd 에서 실행이 가능하다.
+        즉, server에 작성된 코드를 front에서 호출할 수 있다.
+
+
+    * frontend에서 만든 function을 backend에서 실행할 수 있다.
+      argument도 넘겨줄 수 있다. 다만 function은 마지막 argument로
+      넘겨줘야 한다.
+      ex) front에서 콘솔을 찍어주는 함수를 마지막 인자로 넣어줬고 server에서는
+      그걸 실행시켜 줄 수 있다. 인자값도 전해줄 수 있다.
+
+    * socket io 에는 server와 client에서 사용할 수 있는
+      많은 기능들이 있다. document를 잘 확인해보자!
+      https://socket.io/docs/v4/server-api/
