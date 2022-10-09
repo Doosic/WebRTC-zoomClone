@@ -28,30 +28,9 @@ wsServer.on("connection", (socket) => {
     socket.on("enter_room", (roomName, done) => {
         socket.join(roomName)
         done();
+        socket.to(roomName).emit("welcome");
     });
 })
-
-
-/*const sockets = [];
-wss.on("connection", (socket) => {
-    sockets.push(socket);
-    socket["nickname"] = "Anon";
-    console.log("Connected to Browser");
-    socket.on("close", () => {
-        console.log("Disconnected from the Browser");
-    })
-
-    socket.on("message", (msg) => {
-        const message = JSON.parse(msg);
-        console.log(message);
-        switch(message.type){
-            case "new_message":
-                sockets.forEach(aSocket => aSocket.send(`${socket.nickname}: ${message.payload}`));
-            case "nickname":
-                socket["nickname"] = message.payload;
-        }
-    })
-});*/
 
 
 const handleListen = () => console.log(`Listening on http://localhost:3000`);
