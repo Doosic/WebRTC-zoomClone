@@ -46,10 +46,16 @@ wsServer.on("connection", (socket) => {
         socket.join(roomName)
         done();
         socket.to(roomName).emit("welcome", socket.nickname);
+        // 새로운 room이 만들어지면 모든 방에 메세지 전달.
+        wsServer.sockets.emit("room_change", publicRooms());
     });
     socket.on("disconnecting", () => {
         socket.rooms.forEach(room => socket.to(room).emit("bye", socket.nickname));
-    })
+        wsServer.sockets.emit("room_change", publicRooms());
+    });
+    socket.on("disconnect", () => {
+        wsServer.sockets.emit("room_change", publicRooms());
+    });
     socket.on("new_message", (msg, room, done) => {
         console.log(socket.nickname);
         socket.to(room).emit("new_message", `${socket.nickname}: ${msg}`);
